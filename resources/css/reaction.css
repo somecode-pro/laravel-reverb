@@ -1,0 +1,9 @@
+body {
+    height: 100vh;
+    background: url("../assets/img/hero-background.png") no-repeat center center fixed;
+    background-size: cover;
+}
+
+.reaction-button {
+    @apply flex items-center justify-center m-4 p-4 text-3xl w-16 h-16 bg-transparent border border-white border-opacity-50 text-white rounded-full hover:bg-white hover:bg-opacity-50 focus:outline-none transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-110;
+}
