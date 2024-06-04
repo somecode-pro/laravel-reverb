@@ -5,23 +5,20 @@
 @section('content')
     <div class="flex justify-center items-center h-screen">
         <button
-                id="heart"
-                class="reaction-button"
-                onclick="flyEmoji('❤️', this)"
+            id="heart"
+            class="reaction-button"
         >
             ❤️
         </button>
         <button
-                id="star"
-                class="reaction-button"
-                onclick="flyEmoji('⭐', this)"
+            id="star"
+            class="reaction-button"
         >
             ⭐
         </button>
         <button
-                id="rocket"
-                class="reaction-button"
-                onclick="flyEmoji('🚀', this)"
+            id="rocket"
+            class="reaction-button"
         >
             🚀
         </button>
@@ -29,7 +26,7 @@
 @endsection
 
 @section('script')
-    <script>
+    <script type="module">
         function flyEmoji(emoji, button) {
             const rect = button.getBoundingClientRect();
             const flyEmoji = document.createElement('div');
@@ -56,6 +53,7 @@
 
         document.querySelectorAll('button').forEach(button => {
             button.addEventListener('click', function() {
+                flyEmoji(button.innerText, button);
                 console.log(`Reaction ${button.getAttribute('id')} ${button.innerText}`);
             });
         });
