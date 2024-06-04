@@ -54,8 +54,10 @@
             }, 1000);
         }
 
+
         document.querySelectorAll('button').forEach(button => {
             button.addEventListener('click', function() {
+                flyEmoji(button.innerText, button);
                 console.log(`Reaction ${button.getAttribute('id')} ${button.innerText}`);
             });
         });
