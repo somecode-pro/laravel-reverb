@@ -1,5 +1,7 @@
 # Laravel Reverb - веб-сокеты на Laravel
 
+Этот проект посвящен плейлисту [Laravel Reverb (веб-сокеты на Laravel)](https://www.youtube.com/playlist?list=PLiOhsP3M5j5wJmOW-pd85abUB3iqpaiZy) от канала [AreaWeb](https://www.youtube.com/@areaweb).
+
 ## Установка, настройка и использование
 
 Для запуска приложения используется [Laravel Sail](https://laravel.com/docs/11.x/sail).
