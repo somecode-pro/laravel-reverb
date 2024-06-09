@@ -37,4 +37,9 @@ class Chat extends Model
             ? $this->recipient
             : $this->initiator;
     }
+
+    public function hasAccess(int $userId): bool
+    {
+        return $this->initiator_id === $userId || $this->recipient_id === $userId;
+    }
 }

@@ -15,7 +15,7 @@
 						class="overflow-y-auto h-96 space-y-4"
 					>
 						<div
-							v-for="message in messages"
+							v-for="message in messagesList"
 							:key="message.id"
 							class="flex"
 							:class="{ 'justify-end': message.isOwn }"
@@ -78,20 +78,36 @@
 </template>
 
 <script lang="ts" setup>
-	import { onMounted, PropType, ref } from 'vue';
+	import { onMounted, PropType, ref, computed } from 'vue';
 	import { usePage, useForm, Link } from '@inertiajs/vue3';
 	import SectionWrapper from '@shared/Components/SectionWrapper.vue';
 	import MessageData = App.Data.Chat.MessageData;
 	import UserData = App.Data.User.UserData;
 	import SendMessageData = App.Data.Chat.SendMessageData;
 
-	const { chatId } = defineProps({
+	const { chatId, messages } = defineProps({
 		messages: Array as PropType<MessageData[]>,
 		chatId: Number,
 		companion: Object as PropType<UserData>,
 	});
 
+	const messagesList = ref<MessageData[]>(messages);
+
+	const page = usePage();
+	// @ts-ignore
+	const user = computed<UserData>(() => page.props.auth.user);
+
 	onMounted(() => {
+		window.Echo.private(`Chat.${chatId}`).listen(
+			'Chat\\MessageSent',
+			(e) => {
+				const message: MessageData = e.message;
+				message.isOwn = message.user.id === user.value.id;
+				messagesList.value.push(message);
+				scrollToBottom();
+			}
+		);
+
 		scrollToBottom();
 	});
 
@@ -112,7 +128,12 @@
 
 	const scrollToBottom = () => {
 		if (messagesRef.value) {
-			messagesRef.value.scrollTop = messagesRef.value.scrollHeight;
+			setTimeout(
+				() =>
+					(messagesRef.value.scrollTop =
+						messagesRef.value.scrollHeight),
+				10
+			);
 		}
 	};
 </script>
