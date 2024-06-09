@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
     height: 100vh;
     background: url("../assets/img/hero-background.png") no-repeat center center fixed;

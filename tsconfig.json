@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "lib": [
+      "es2015",
+      "es2020",
+      "es2022",
+      "esnext",
+      "system",
+      "node16"
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@pages/*": ["resources/js/Pages/*"],
+      "@shared/*": ["resources/js/Shared/*"],
+    }
+  }
+}
