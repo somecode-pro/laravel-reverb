@@ -6,12 +6,13 @@
       "es2022",
       "esnext",
       "system",
-      "node16"
+      "node16",
+      "dom"
     ],
     "baseUrl": ".",
     "paths": {
       "@pages/*": ["resources/js/Pages/*"],
-      "@shared/*": ["resources/js/Shared/*"],
+      "@shared/*": ["resources/js/Shared/*"]
     }
   }
 }
